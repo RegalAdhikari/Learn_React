@@ -1,28 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
-function App() {
-    return<div>
-        <h2>Pizza Menu</h2>
-        <Pizza/>
-    </div>
-}
-
-
-function Pizza(params) {
-    return <>
-        <img src='pizzas/focaccia.jpg'></img>
-        <h2>Focaccia</h2>
-        <p>Bread with italian olive oil and rosemary</p>
-    </>
-}
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
-)
-
 const pizzaData = [
   {
     name: "Focaccia",
