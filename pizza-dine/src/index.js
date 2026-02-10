@@ -1,27 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+// import App from './App';
+// import reportWebVitals from './reportWebVitals';
 
-function App() {
-    return<div>
-        <h2>Pizza Menu</h2>
-        <Pizza/>
-    </div>
-}
-
-
-function Pizza(params) {
-    return <>
-        <img src='pizzas/focaccia.jpg'></img>
-        <h2>Focaccia</h2>
-        <p>Bread with italian olive oil and rosemary</p>
-    </>
-}
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
-)
 
 const pizzaData = [
   {
@@ -67,3 +49,83 @@ const pizzaData = [
     soldOut: false,
   },
 ];
+
+function App()
+{
+  return( <div className='container'>
+    <Header/>
+    <Menu/>
+    <Footer/>
+    </div>
+  )
+}
+
+function Header()
+{
+  // const style = {color: 'red', fontSize:'48px'}
+
+  return (
+    <header className='header'>
+      <h1> Fast 'Um Fast Pizza </h1>
+    </header>
+  );
+}
+
+function Menu()
+{
+  return (
+    <main className='menu'>
+      <h2> Our Menu</h2>
+      <Pizza 
+        name = 'Pizza Spinaci' 
+        ingredient = 'Tomato, mozarella, spinach, and ricotta cheese'
+        photoName = 'pizzas/spinaci.jpg'
+        price = {10}
+      />
+
+      <Pizza 
+        name = 'Pizza Funghi' 
+        ingredient = 'Tomato, mushrooms'
+        photoName = 'pizzas/funghi.jpg'
+        price = {12}
+      />
+    </main>
+  );
+}
+
+function Pizza(props)
+{
+  return (
+    <div className='pizza'>
+      <img src = {props.photoName} alt = {props.name} />
+      <div>
+
+      <h3>{props.name}</h3>
+      <p>{props.ingredient}</p>
+      <span>{props.price}</span>
+      </div>
+    </div>
+  );
+}
+function Footer()
+{
+  // const hour = new Date().getHours()
+  // const openHour = 12;
+  // const closeHour = 22;
+
+  // if(hour >= openHour && hour <= closeHour) alert("We're currently open!");
+  // else alert("Sorry we're close");
+  
+  return (
+    <footer className='footer'>{new Date().toLocaleDateString()} We're currently Open</footer>
+    // React.createElement('footer', null, "We're currently open")
+  );
+}
+
+
+
+
+//react v18
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<React.StrictMode><App/></React.StrictMode>);
